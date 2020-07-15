@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}list page{% endblock%}
+{% block content %}
+<a href="{% url 'index' %}">Главная</a>
+{% for rubric in rubrics %}
+<a href="{{rubric.pk}}">{{rubric.name}}</a>
+{% endfor %}
+
+{% for product in products %}
+<h1>{{product.title }}</h1>
+<h3>{{product.description }}</h3>
+<h3>{{product.price }}</h3>
+<h3>{{product.number }}</h3>
+<a href="{% url 'by_rubric' product.pk %}">{{product.rubric.name}}</a>
+<h4>{{product.date_publeshed}}</h4>
+{% endfor %}
+
+
+
+{% endblock%}
